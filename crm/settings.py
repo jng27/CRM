@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'invoices',
     'events',
     'teams',
+    'reminder',
 ]
 
 MIDDLEWARE = [
@@ -118,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Kolkata'
+TIME_ZONE = 'Asia/Singapore'
 
 USE_I18N = True
 
