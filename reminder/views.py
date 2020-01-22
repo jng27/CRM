@@ -10,6 +10,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 def add_reminders(request):
-    template = loader.get_template('reminder\templates\reminder.html')
+    template = loader.get_template('reminder.html')
     context = {}
     return HttpResponse(template.render(context,request))

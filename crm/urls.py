@@ -22,6 +22,7 @@ urlpatterns = [
     path('teams/', include('teams.urls', namespace="teams")),
     path('emails/', include('emails.urls', namespace="emails")),
     # path('planner/', include('planner.urls', namespace="planner")),
+    path('reminder/', include('reminder.urls', namespace="reminder")),
     path('logout/', views.LogoutView, {'next_page': '/login/'}, name="logout"),
 
 ]
