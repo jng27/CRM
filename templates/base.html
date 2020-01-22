@@ -42,7 +42,7 @@
               <li class="nav-item"><a class="nav-link" id="opportunities"href="{% url 'opportunities:list' %}">Opportunities</a></li>
               <li class="nav-item"><a class="nav-link" id="cases" href="{% url 'cases:list' %}">Cases</a></li>
               <li class="nav-item"><a class="nav-link" id="documents" href="{% url 'common:doc_list' %}">Documents</a></li>
-              <li class="nav-item"><a class="nav-link" id="reminder" href="{% url 'common:reminder' %}">Reminder</a></li>
+              <li class="nav-item"><a class="nav-link" id="reminder" href="{% url 'reminder:add_reminders' %}">Reminder</a></li>
               {% if request.user.role == "ADMIN" or request.user.is_superuser %}
               <li class="nav-item"><a class="nav-link" id="users" href="{% url 'common:api_settings' %}">Settings</a></li>
               {% endif %}

@@ -18,8 +18,9 @@
 
   {% if request.user.role == 'ADMIN' or request.user.is_superuser %}
   <li class="nav-item"><a class="nav-link" id="teams" href="{% url 'teams:teams_list' %}">Teams</a></li>
+  <li class="nav-item"><a class="nav-link" id="reminder" href="{% url 'reminder:reminders_list' %}">Reminder</a></li>
   {% endif %}
-  <li class="nav-item"><a class="nav-link" id="reminder" href="{% url 'reminder:add_reminders' %}">Reminder</a></li>
+  
 
 </ul>
 {% endblock %}
