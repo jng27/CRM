@@ -18,4 +18,9 @@ def reminders_list(request):
     context["list"] = List
     print(context["list"])
     return HttpResponse(template.render(context,request))
+
+def add_Reminders(request):
+    ar = request.POST['content']
+    new_object = toDoList(content=ar)
+    new_object.save()
  

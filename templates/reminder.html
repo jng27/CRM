@@ -13,7 +13,7 @@
     .container {
         width: 600px;
         margin: 0px auto;
-        background-color: azure;
+        background-color:tan;
         padding: 20px;
         border-radius: 8px;
     }
@@ -49,12 +49,17 @@
         <div class='row'>
             <ul>
                 {% for item in list %}
-                <li>{{ item.content  }} <button type="button" class="btn btn-outline-danger">Remove</button> </li>
+                <li>{{ item.content  }}<button type="button" class="btn btn-outline-danger">Remove</button> </li>
                 {% endfor %}
             </ul>
-
         </div>
-
+        <div class='row'>
+            <form action="/add_Reminders/" method="POST">
+            {% csrf_token %}
+            <input type="text" name="content" id="">
+            <input type="submit" name="" id="" value="Add" class="btn btn-outline-success">             
+            </form>
+        </div>
 
     </div>
 
