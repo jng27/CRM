@@ -221,7 +221,11 @@
             <button type="button" class="close" data-dismiss="modal" style="float: right;">&times;</button>
           </div>
           <div class="modal-body">
-            <p>Some text in the modal.</p>
+            {% for item in reminder %}
+            <div class='row'>
+              <label for="item_reminder">  {{item.content}}</label>
+            </div>
+            {% endfor %}
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
