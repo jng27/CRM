@@ -28,4 +28,13 @@ def add_Reminders(request):
     List = toDoList.objects.all()                   #      ON BROWSER
     context["list"] = List                          #   }
     return HttpResponse(template.render(context,request))
- 
+
+
+def delete_Reminders(request, id):
+    delete_item = toDoList.objects.get(id=id)
+    delete_item.delete()
+    template = loader.get_template('reminder.html') # {
+    context = {}                                    #      FORCE RELOAD 
+    List = toDoList.objects.all()                   #      ON BROWSER
+    context["list"] = List                          #   }
+    return HttpResponse(template.render(context,request))

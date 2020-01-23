@@ -53,9 +53,12 @@
                     <div class="col-md-6">
                         <li style="text-align: left;">{{item.content}}</li>
                     </div>
-                    <div class='col'>
-                        <button type="button" class="btn btn-outline-danger" style="float:right">Remove</button>
-                    </div>
+                    <form action="/reminder/todelete/{{item.id}}/" method="POST">
+                        {% csrf_token %}
+                        <div class='col'>
+                            <input type="submit" name="" id="" value="Remove" class="btn btn-outline-danger">
+                        </div>
+                    </form>
                 </div>
                 {% endfor %}
             </ul>
