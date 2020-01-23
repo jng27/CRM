@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.template import loader
 from django.utils.decorators import method_decorator
@@ -23,4 +23,9 @@ def add_Reminders(request):
     ar = request.POST['content']
     new_object = toDoList(content=ar)
     new_object.save()
+    template = loader.get_template('reminder.html') # {
+    context = {}                                    #      FORCE RELOAD 
+    List = toDoList.objects.all()                   #      ON BROWSER
+    context["list"] = List                          #   }
+    return HttpResponse(template.render(context,request))
  

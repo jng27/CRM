@@ -5,5 +5,5 @@ app_name = 'reminder'
 
 urlpatterns = [
     path('', reminders_list, name='reminders_list'),
-    path('/toadd/', add_Reminders, name='add_Reminders')
+    path('toadd/', add_Reminders, name='add_Reminders')
 ]

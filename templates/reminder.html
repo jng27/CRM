@@ -13,7 +13,7 @@
     .container {
         width: 600px;
         margin: 0px auto;
-        background-color:tan;
+        background-color: tan;
         padding: 20px;
         border-radius: 8px;
     }
@@ -36,28 +36,36 @@
 
 {% block content %}
 <div class="w3-container" style="text-align: center;">
-    <h1>Objectives yet to complete</h1>
+    <h1>TODAY'S PENDING OBJECTIVES</h1>
     <div class="container">
 
         <div class="row" style="text-align: center;">
-            <div class='col-1'>
+            <div class='col-md-6' style="text-align: left;">
                 <label for="notes"
                     style="text-decoration: underline; font-family: Arial, Helvetica, sans-serif; font-size: large;">
-                    Notes</label>
+                    TO-DO:</label>
             </div>
         </div>
         <div class='row'>
             <ul>
                 {% for item in list %}
-                <li>{{ item.content  }}<button type="button" class="btn btn-outline-danger">Remove</button> </li>
+                <div class='row'>
+                    <div class="col-md-6">
+                        <li style="text-align: left;">{{item.content}}</li>
+                    </div>
+                    <div class='col'>
+                        <button type="button" class="btn btn-outline-danger" style="float:right">Remove</button>
+                    </div>
+                </div>
                 {% endfor %}
             </ul>
+
         </div>
         <div class='row'>
-            <form action="/add_Reminders/" method="POST">
-            {% csrf_token %}
-            <input type="text" name="content" id="">
-            <input type="submit" name="" id="" value="Add" class="btn btn-outline-success">             
+            <form action="/reminder/toadd/" method="POST">
+                {% csrf_token %}
+                <input type="text" name="content" id="">
+                <input type="submit" name="" id="" value="Add" class="btn btn-outline-success">
             </form>
         </div>
 
