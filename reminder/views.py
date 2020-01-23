@@ -8,12 +8,14 @@ from django.shortcuts import redirect, render
 from django.template import loader
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from reminder.models import *
+from reminder.models import toDoList
 
 
 def reminders_list(request):
     template = loader.get_template('reminder.html')
     context = {}
-    toDoList = toDoList.objects.all()
-    context["list"] = toDoList
+    List = toDoList.objects.all()
+    context["list"] = List
+    print(context["list"])
     return HttpResponse(template.render(context,request))
+ 
