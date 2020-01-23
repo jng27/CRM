@@ -45,7 +45,8 @@ from contacts.models import Contact
 from leads.models import Lead
 from opportunity.models import Opportunity
 from teams.models import Teams
-from marketing.models import ContactEmailCampaign, BlockedDomain, BlockedEmail 
+from marketing.models import ContactEmailCampaign, BlockedDomain, BlockedEmail
+from reminder.models import toDoList
 
 
 def handler404(request, exception):
@@ -74,6 +75,7 @@ class HomeView(SalesAccessRequiredMixin, LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
+        all_of_reminder_list = toDoList.objects.all()
         accounts = Account.objects.filter(status="open")
         contacts = Contact.objects.all()
         leads = Lead.objects.exclude(
@@ -99,6 +101,7 @@ class HomeView(SalesAccessRequiredMixin, LoginRequiredMixin, TemplateView):
         context["contacts_count"] = contacts.count()
         context["leads_count"] = leads
         context["opportunities"] = opportunities
+        context["reminder"] = all_of_reminder_list
         return context
 
 
@@ -1105,3 +1108,6 @@ def resend_activation_link(request, userId): # pragma: no cover
     kwargs = {'user_email': user.email, 'domain': request.get_host(), 'protocol': request.scheme}
     resend_activation_link_to_user.delay(**kwargs)
     return HttpResponseRedirect('/')
+
+
+    

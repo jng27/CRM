@@ -1,7 +1,7 @@
 {% extends 'sales/base.html' %}
 {% load staticfiles %}
 {% load thumbnail %}
-{% block extralinks %} 
+{% block extralinks %}
 <style>
   .text_ellipsis {
     width: 16em;
@@ -78,8 +78,8 @@
                   <tr>
                     <td>
                       <div class="text_ellipsis">
-                      <a href="{% url 'accounts:view_account' account.id %}">{{account.name}}</a>
-                    </div>
+                        <a href="{% url 'accounts:view_account' account.id %}">{{account.name}}</a>
+                      </div>
                     </td>
                     <td style="display: block;">
                       {% for tag in account.tags.all|slice:'3' %}
@@ -155,8 +155,9 @@
                   <tr>
                     <td>
                       <div class="text_ellipsis">
-                      <a href="{% url 'opportunity:opp_view' opportunity.id %}">{{opportunity.name}}</a>
-                    </div></td>
+                        <a href="{% url 'opportunity:opp_view' opportunity.id %}">{{opportunity.name}}</a>
+                      </div>
+                    </td>
                     <td style="display: block;">
                       {% for tag in opportunity.tags.all|slice:'3' %}
                       <span class="text-left color{{forloop.counter}} tag_class_opp" id="list_tag"
@@ -210,6 +211,24 @@
         </div>
       </div>
     </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" style="text-align: left;">TODAY'S TARGET</h4>
+            <button type="button" class="close" data-dismiss="modal" style="float: right;">&times;</button>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -232,6 +251,7 @@
       window.location.href = url;
     });
 
+    $('#myModal').modal('show');
   });
 
 </script>
