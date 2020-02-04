@@ -31,7 +31,7 @@ class CasesListView(SalesAccessRequiredMixin, LoginRequiredMixin, TemplateView):
     template_name = "cases.html"
 
     def get_queryset(self):
-        queryset = self.model.objects.all().select_related("account")
+        queryset = self.model.objects.all().select_related("account").order_by('status').reverse()
         if self.request.user.role != "ADMIN" and not self.request.user.is_superuser:
             queryset = queryset.filter(
                 Q(assigned_to__in=[self.request.user]) | Q(created_by=self.request.user))
@@ -189,7 +189,7 @@ class CaseDetailView(SalesAccessRequiredMixin, LoginRequiredMixin, DetailView):
     template_name = "view_case.html"
 
     def get_queryset(self):
-        queryset = super(CaseDetailView, self).get_queryset()
+        queryset = super(CaseDetailView, self).get_queryset().order_by('status').reverse()
         return queryset.prefetch_related("contacts", "account")
 
     def get_context_data(self, **kwargs):
